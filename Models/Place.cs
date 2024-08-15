@@ -10,10 +10,8 @@ public class Places
     [Required]
     public string PlaceName { get; set; }
 
-    // Adres ID'si opsiyonel
     public int? AddressId { get; set; }
 
-    // Adres detayları opsiyonel
     public AddressDetail? Address { get; set; }
 }
 
@@ -29,7 +27,6 @@ public class AddressDetail
     [Required]
     public string City { get; set; }
 
-    // Bu adrese bağlı olan yerlerin listesi
     public ICollection<Places>? Places { get; set; }
 }
 

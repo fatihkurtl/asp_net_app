@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 using asp_net_app.DTOs;
 
+using Microsoft.AspNetCore.Authorization;
+
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class PlacesController : ControllerBase
 {
     private readonly PlaceAddressDbContext _context;

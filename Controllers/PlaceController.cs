@@ -23,7 +23,7 @@ public class PlacesController : ControllerBase
         return await _context.Places.Include(p => p.Address).ToListAsync();
     }
 
-    // GET: api/Places/5
+    // GET: api/Places/id
     [HttpGet("{id:int}")]
     public async Task<ActionResult<Places>> GetPlace(int id)
     {
@@ -36,13 +36,6 @@ public class PlacesController : ControllerBase
         }
 
         return place;
-    }
-
-    // GET: api/Address
-    [HttpGet("address")]
-    public async Task<ActionResult<IEnumerable<AddressDetail>>> GetAddress()
-    {
-        return await _context.AddressDetails.Include(p => p.Places).ToListAsync();
     }
 
     // POST: api/Places
@@ -67,26 +60,38 @@ public class PlacesController : ControllerBase
     }
 
     // PUT: api/Places/id
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutPlace(int id, [FromBody] AddressCreateDto addressDto)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> PutPlace(int id, [FromBody] PlaceWithAddressDto dto)
     {
-        var existingPlace = await _context.Places.FindAsync(id);
+        var existingPlace = await _context.Places.Include(p => p.Address)
+                                                 .FirstOrDefaultAsync(p => p.PlaceId == id);
         if (existingPlace == null)
         {
             return NotFound();
         }
 
-        existingPlace.Address = new AddressDetail
+        existingPlace.PlaceName = dto.PlaceName;
+
+        if (existingPlace.Address == null)
         {
-            StreetAddress = addressDto.StreetAddress,
-            City = addressDto.City
-        };
+            existingPlace.Address = new AddressDetail();
+        }
+
+        existingPlace.Address.City = dto.Address.City;
+        existingPlace.Address.StreetAddress = dto.Address.StreetAddress;
 
         _context.Entry(existingPlace).State = EntityState.Modified;
         await _context.SaveChangesAsync();
 
         return NoContent();
     }
+
+    // GET: api/Address
+    [HttpGet("address")]
+    public async Task<ActionResult<IEnumerable<AddressDetail>>> GetAddress()
+    {
+        return await _context.AddressDetails.Include(p => p.Places).ToListAsync();
+    }    
 
     // DELETE: api/Places/id
     [HttpDelete("{id}")]

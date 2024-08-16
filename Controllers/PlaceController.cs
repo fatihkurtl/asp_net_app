@@ -38,6 +38,13 @@ public class PlacesController : ControllerBase
         return place;
     }
 
+    // GET: api/Address
+    [HttpGet("address")]
+    public async Task<ActionResult<IEnumerable<AddressDetail>>> GetAddress()
+    {
+        return await _context.AddressDetails.Include(p => p.Places).ToListAsync();
+    }
+
     // POST: api/Places
     [HttpPost]
     public async Task<ActionResult<Places>> PostPlace([FromBody] PlaceCreateDto placeDto)
@@ -59,6 +66,7 @@ public class PlacesController : ControllerBase
         return CreatedAtAction(nameof(GetPlace), new { id = place.PlaceId }, place);
     }
 
+    // PUT: api/Places/id
     [HttpPut("{id}")]
     public async Task<IActionResult> PutPlace(int id, [FromBody] AddressCreateDto addressDto)
     {
@@ -75,6 +83,38 @@ public class PlacesController : ControllerBase
         };
 
         _context.Entry(existingPlace).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    // DELETE: api/Places/id
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePlace(int id)
+    {
+        var place = await _context.Places.FindAsync(id);
+        if (place == null)
+        {
+            return NotFound();
+        }
+
+        _context.Places.Remove(place);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    // DELETE: api/Address/id
+    [HttpDelete("address/{id}")]
+    public async Task<IActionResult> DeleteAddress(int id)
+    {
+        var address = await _context.AddressDetails.FindAsync(id);
+        if (address == null)
+        {
+            return NotFound();
+        }
+
+        _context.AddressDetails.Remove(address);
         await _context.SaveChangesAsync();
 
         return NoContent();

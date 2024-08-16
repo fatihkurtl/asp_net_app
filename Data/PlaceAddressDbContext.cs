@@ -8,4 +8,5 @@ public class PlaceAddressDbContext : DbContext
 
     public DbSet<Places> Places { get; set; }
     public DbSet<AddressDetail> AddressDetails { get; set; }
+    public object Addresses { get; internal set; }
 }

@@ -4,16 +4,34 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// CORS ayarları
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
+// Statik dosyalar için SPA yapılandırması
+builder.Services.AddSpaStaticFiles(configuration =>
+{
+    configuration.RootPath = "wwwroot/client-app"; // Build dizini
+});
+
+// Servisleri ekle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
 
-    // Configure Swagger to use the JWT bearer token
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -40,7 +58,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// JWT authentication
+// JWT kimlik doğrulama
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -56,7 +74,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -68,7 +85,7 @@ builder.Services.AddDbContext<PlaceAddressDbContext>(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// HTTP istek boru hattını yapılandır
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -80,10 +97,21 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors("AllowAllOrigins");
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles(); // Statik dosyalar için
+app.UseSpaStaticFiles(); // SPA için statik dosyalar
+ // SPA için statik dosyalar
+
+// React uygulamanızın build dizini `wwwroot` olduğundan, bu dizini kullanıyoruz
+
+app.MapFallbackToFile("/app/index.html");
+
 
 app.MapControllers();
 

@@ -39,8 +39,8 @@ public class PlacesController : ControllerBase
         return place;
     }
 
-    // POST: api/Places
-    [HttpPost]
+    // POST: api/Places/add
+    [HttpPost("add")]
     public async Task<ActionResult<Places>> PostPlace([FromBody] PlaceCreateDto placeDto)
     {
         if (placeDto == null)
@@ -60,8 +60,8 @@ public class PlacesController : ControllerBase
         return CreatedAtAction(nameof(GetPlace), new { id = place.PlaceId }, place);
     }
 
-    // PUT: api/Places/id
-    [HttpPut("{id:int}")]
+    // PUT: api/Places/update/id
+    [HttpPut("update/{id:int}")]
     public async Task<IActionResult> PutPlace(int id, [FromBody] PlaceWithAddressDto dto)
     {
         var existingPlace = await _context.Places.Include(p => p.Address)

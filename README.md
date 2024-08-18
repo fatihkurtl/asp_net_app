@@ -2,6 +2,9 @@
 
 ## Açıklama
 Bu uygulama, kullanıcıların giriş yaparak kimlik doğrulaması gerçekleştirmesine ve ardından sayfalar arasında gezinmesine olanak tanır. Kullanıcılar gezdikleri yerleri ekleyebilir, düzenleyebilir, silebilir ve detaylı adres bilgilerini güncelleyebilir.
+- **`http://localhost:5084/client-app/`**: Frontend URL
+- **`http://localhost:5084/index.html`**: Swagger URL
+
 
 **Giriş Bilgileri:**
 - **Kullanıcı Adı:** admin

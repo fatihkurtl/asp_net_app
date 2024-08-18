@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W81BxYrCOgzI8JC0PegT1VTRMutWCUOlK1eG+KA1I9c=",
+  "Hash": "+ERQ3JDur8a2aihMePn3zGr1yn4MrrociUTXsRJ4ghs=",
   "Source": "asp_net_app",
   "BasePath": "_content/asp_net_app",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-B_ucA3y0.js",
+      "SourceId": "asp_net_app",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\",
+      "BasePath": "_content/asp_net_app",
+      "RelativePath": "client-app/assets/index-B_ucA3y0.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-B_ucA3y0.js"
+    },
     {
       "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-D-EB0Bdw.css",
       "SourceId": "asp_net_app",
@@ -34,25 +53,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-D-EB0Bdw.css"
-    },
-    {
-      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-qpP2JdNx.js",
-      "SourceId": "asp_net_app",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\",
-      "BasePath": "_content/asp_net_app",
-      "RelativePath": "client-app/assets/index-qpP2JdNx.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-qpP2JdNx.js"
     },
     {
       "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\index.html",

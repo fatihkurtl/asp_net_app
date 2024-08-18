@@ -43,7 +43,3 @@ dotnet ef database update
 ```bash
 dotnet run
 ```
-
-## Katkıda bulunan
-
-## Lisans

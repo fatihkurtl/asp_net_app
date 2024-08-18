@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import ApiServices from "../services/api";
+import PlaceCard from "../components/PlaceCard";
+
 const HomePage = () => {
   const [places, setPlaces] = useState([]);
   const [error, setError] = useState(null);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPlaces = async () => {
@@ -13,22 +17,36 @@ const HomePage = () => {
       } catch (error) {
         console.log(error);
         setError(error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 500);
       }
     };
     fetchPlaces();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+        Yükleniyor...
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h1>Home</h1>
-      <ul>
-        {places.map((place) => (
-          <li key={place.placeId}>
-            <h2>{place.placeName}</h2>
-            <p>{place.address.city}</p>
-            <p>{place.address.streetAddress}</p>
+    <div className="container mx-auto p-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {error && <li className="text-red-500">{error.message}</li>}
+        {places.length > 0 ? (
+          places.map((place) => (
+            <PlaceCard key={place.placeId} place={place} />
+          ))
+        ) : (
+          <li className="col-span-full text-center text-gray-500">
+            Yer bulunamadı...
           </li>
-        ))}
+        )}
       </ul>
     </div>
   );

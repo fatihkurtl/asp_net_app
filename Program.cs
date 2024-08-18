@@ -80,6 +80,9 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
     });
 
+builder.Services.AddSession();
+builder.Services.AddDistributedMemoryCache();
+
 builder.Services.AddDbContext<PlaceAddressDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -104,14 +107,12 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseStaticFiles(); // Statik dosyalar için
-app.UseSpaStaticFiles(); // SPA için statik dosyalar
- // SPA için statik dosyalar
-
-// React uygulamanızın build dizini `wwwroot` olduğundan, bu dizini kullanıyoruz
+app.UseStaticFiles();
+app.UseSpaStaticFiles();
 
 app.MapFallbackToFile("/app/index.html");
 
+app.UseSession();
 
 app.MapControllers();
 

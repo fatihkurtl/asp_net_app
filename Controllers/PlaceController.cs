@@ -84,7 +84,7 @@ public class PlacesController : ControllerBase
         _context.Entry(existingPlace).State = EntityState.Modified;
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok();
     }
 
     // GET: api/Address

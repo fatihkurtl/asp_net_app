@@ -32,5 +32,14 @@ namespace asp_net_app.Controllers
 
             return Ok(new { Token = tokenString });
         }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return Ok(new { message = "Başarıyla çıkış yapıldı" });
+        }
     }
 }
+

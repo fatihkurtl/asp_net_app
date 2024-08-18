@@ -107,7 +107,6 @@ const EditPlacePage = () => {
               value={placeDetails.placeName}
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              // required
             />
           </div>
           <div className="mb-4">
@@ -124,7 +123,6 @@ const EditPlacePage = () => {
               value={placeDetails.streetAddress}
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              // required
             />
           </div>
           <div className="mb-4">
@@ -141,7 +139,6 @@ const EditPlacePage = () => {
               value={placeDetails.city}
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              // required
             />
           </div>
           <button

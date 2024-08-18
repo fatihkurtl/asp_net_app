@@ -6,7 +6,7 @@ const AddPlacePage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     placeName: "",
-    addressId: null
+    addressId: null,
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -15,26 +15,30 @@ const AddPlacePage = () => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await ApiServices.addPlace(formData);
-      console.log(response);
-      if (response.status === 201) {
-        setSuccess("Yer eklendi.");
-        setTimeout(() => {
-          navigate
-        }, 1000);
-      } else {
+    if (formData.placeName) {
+      try {
+        const response = await ApiServices.addPlace(formData);
+        console.log(response);
+        if (response.status === 201) {
+          setSuccess("Yer eklendi.");
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
+        } else {
+          setError("Yer eklenemedi!");
+        }
+      } catch (error) {
+        console.error(error);
         setError("Yer eklenemedi!");
-      }
-    } catch (error) {
-      console.error(error);
-      setError("Yer eklenemedi!");
+      } 
+    } else {
+      setError("Yer adı alanı zorunludur!");
     }
   };
 
@@ -46,7 +50,12 @@ const AddPlacePage = () => {
         {success && <p className="text-green-500 mb-4">{success}</p>}
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="placeName" className="block text-sm font-medium text-gray-700">Yer Adı</label>
+            <label
+              htmlFor="placeName"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Yer Adı
+            </label>
             <input
               type="text"
               id="placeName"
@@ -55,7 +64,6 @@ const AddPlacePage = () => {
               onChange={handleChange}
               placeholder="Yer adını giriniz"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              // required
             />
           </div>
           <button

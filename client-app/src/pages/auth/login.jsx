@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import ApiServices from "../../services/api";
 import { login } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,6 @@ const LoginPage = () => {
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
 
   const navigate = useNavigate();
 
@@ -29,11 +28,9 @@ const LoginPage = () => {
     if (formData.username && formData.password) {
       try {
         const response = await ApiServices.adminLogin(formData.username, formData.password);
-        // console.log(response.data.token); 
         if (response.data.token) {
           dispatch(login({ token: response.data.token }));
           navigate("/");
-          // console.log(token);
         } else {
           setError("Kullanıcı adı veya şifre hatalı");
         }       
@@ -45,11 +42,7 @@ const LoginPage = () => {
     } else {
       setError("Lütfen kullanıcı adınızı ve sifrenizi giriniz.");
     }
-  };
-
-  useEffect(() => {
-    console.log("Updated token:", token);
-  }, [token]);
+  };  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
@@ -72,7 +65,6 @@ const LoginPage = () => {
               onChange={handleChange}
               placeholder="Kullanıcı adınızı giriniz"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              // required
             />
           </div>
           <div className="mb-6">
@@ -90,7 +82,6 @@ const LoginPage = () => {
               onChange={handleChange}
               placeholder="Şifrenizi giriniz"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-              // required
             />
           </div>
           <button

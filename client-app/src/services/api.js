@@ -14,7 +14,6 @@ class ApiServices {
   async getPlace(id) {
     try {
       const response = await axiosApi.get(`/api/Places/${id}`);
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -25,7 +24,6 @@ class ApiServices {
   async deletePlace(id) {
     try {
       const response = await axiosApi.delete(`/api/Places/${id}`);
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -36,7 +34,6 @@ class ApiServices {
   async addPlace(data) {
     try {
       const response = await axiosApi.post("/api/Places/add", data);
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -47,7 +44,6 @@ class ApiServices {
   async updatePlace(id, data) {
     try {
       const response = await axiosApi.put(`/api/Places/update/${id}`, data);
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -61,7 +57,6 @@ class ApiServices {
         username,
         password,
       });
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -69,10 +64,9 @@ class ApiServices {
     }
   }
 
-  async adminLogouth() {
+  async adminLogout() {
     try {
       const response = await axiosApi.post("/api/Auth/logout");
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);

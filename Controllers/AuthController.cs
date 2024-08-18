@@ -14,6 +14,12 @@ namespace asp_net_app.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDto loginDto)
         {
+
+            if (loginDto.Username != "admin" || loginDto.Password != "admin")
+            {
+                return Unauthorized(new { message = "Kullanıcı adı veya şifre hatalı" });
+            }
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("oJx5cdKbp96T7stHTTaGERmcFAiivdr60sTjPdRlDhvReokpfk8zVGEZOBgQCTgT");
             var tokenDescriptor = new SecurityTokenDescriptor

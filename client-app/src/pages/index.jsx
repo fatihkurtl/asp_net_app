@@ -16,7 +16,7 @@ const HomePage = () => {
       if (!token) return;
       setLoading(true);
       try {
-        const response = await ApiServices.getPlaces();
+        const response = await ApiServices.getPlaces(token);
         console.log(response.data.$values);
         setPlaces(response.data.$values);
       } catch (error) {
@@ -28,7 +28,9 @@ const HomePage = () => {
         }, 500);
       }
     };
-    fetchPlaces();
+    if (token) {
+      fetchPlaces();
+    }
   }, [token]);
 
   if (loading) {
@@ -42,7 +44,9 @@ const HomePage = () => {
   return (
     <div className="container mx-auto p-4 mb-4">
       <div className="flex justify-end mb-4">
-        <span className="font-medium">Ziyaret Edilen Toplam Yer Sayısı: {places.length}</span>
+        <span className="font-medium">
+          Ziyaret Edilen Toplam Yer Sayısı: {places.length}
+        </span>
       </div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {error && <li className="text-red-500">{error.message}</li>}

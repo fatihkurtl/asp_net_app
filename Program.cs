@@ -26,7 +26,7 @@ builder.Services.AddSpaStaticFiles(configuration =>
     configuration.RootPath = "wwwroot/client-app"; // Build dizini
 });
 
-// Servisleri ekle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -88,7 +88,6 @@ builder.Services.AddDbContext<PlaceAddressDbContext>(options =>
 
 var app = builder.Build();
 
-// HTTP istek boru hattını yapılandır
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -110,7 +109,7 @@ app.UseAuthorization();
 app.UseStaticFiles();
 app.UseSpaStaticFiles();
 
-app.MapFallbackToFile("/app/index.html");
+app.MapFallbackToFile("client-app/index.html");
 
 app.UseSession();
 

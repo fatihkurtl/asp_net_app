@@ -17,6 +17,11 @@ const PlaceCard = ({ place }) => {
     }
   };
 
+  const formatDate = (date) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(date).toLocaleDateString('tr-TR', options);
+  };
+
   return (
     <li
       key={place.placeId}
@@ -39,6 +44,9 @@ const PlaceCard = ({ place }) => {
           <p className="text-red-600">Adres bilgisi tanımlı değil.</p>
         </>
       )}
+      <hr className="my-4" />
+      <p className="text-gray-600 text-sm">Oluşturulma Tarihi: {formatDate(place.createdAt)}</p>
+      <p className="text-gray-600 text-sm">Son Güncelleme Tarihi: {formatDate(place.updatedAt)}</p>
       <button
         onClick={() => setShowConfirmModal(true)}
         className="absolute top-2 right-2 text-red-500 hover:text-red-700 focus:outline-none"
@@ -94,6 +102,8 @@ PlaceCard.propTypes = {
   place: PropTypes.shape({
     placeId: PropTypes.number.isRequired,
     placeName: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
+    updatedAt: PropTypes.string.isRequired,
     address: PropTypes.shape({
       city: PropTypes.string,
       streetAddress: PropTypes.string,

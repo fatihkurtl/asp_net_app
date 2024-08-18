@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 public class Places
 {
@@ -11,6 +12,17 @@ public class Places
     public int? AddressId { get; set; }
 
     public AddressDetail? Address { get; set; }
+
+    [DataType(DataType.DateTime)]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [DataType(DataType.DateTime)]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+
 }
 
 
@@ -26,6 +38,16 @@ public class AddressDetail
     public string City { get; set; }
 
     public ICollection<Places>? Places { get; set; }
+
+    [DataType(DataType.DateTime)]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+    [DataType(DataType.DateTime)]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 }
 
 

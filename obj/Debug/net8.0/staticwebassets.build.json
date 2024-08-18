@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RIv8EnkA3sM63o9TcuNdlTiq9DueJp/sfFO4pwp8Y6s=",
+  "Hash": "W81BxYrCOgzI8JC0PegT1VTRMutWCUOlK1eG+KA1I9c=",
   "Source": "asp_net_app",
   "BasePath": "_content/asp_net_app",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-CpuN4Fcq.js",
+      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-D-EB0Bdw.css",
       "SourceId": "asp_net_app",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\",
       "BasePath": "_content/asp_net_app",
-      "RelativePath": "client-app/assets/index-CpuN4Fcq.js",
+      "RelativePath": "client-app/assets/index-D-EB0Bdw.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -33,15 +33,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-CpuN4Fcq.js"
+      "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-D-EB0Bdw.css"
     },
     {
-      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-DiwrgTda.css",
+      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\index-qpP2JdNx.js",
       "SourceId": "asp_net_app",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\",
       "BasePath": "_content/asp_net_app",
-      "RelativePath": "client-app/assets/index-DiwrgTda.css",
+      "RelativePath": "client-app/assets/index-qpP2JdNx.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,26 +52,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-DiwrgTda.css"
-    },
-    {
-      "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\assets\\react-CHdo91hT.svg",
-      "SourceId": "asp_net_app",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\",
-      "BasePath": "_content/asp_net_app",
-      "RelativePath": "client-app/assets/react-CHdo91hT.svg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\client-app\\assets\\react-CHdo91hT.svg"
+      "OriginalItemSpec": "wwwroot\\client-app\\assets\\index-qpP2JdNx.js"
     },
     {
       "Identity": "C:\\Users\\kurtf\\OneDrive\\Desktop\\asp_net_app\\wwwroot\\client-app\\index.html",

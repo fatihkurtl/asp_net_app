@@ -95,7 +95,7 @@ public class PlacesController : ControllerBase
     }    
 
     // DELETE: api/Places/id
-    [HttpDelete("{id}")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeletePlace(int id)
     {
         var place = await _context.Places.FindAsync(id);

@@ -23,7 +23,7 @@ class ApiServices {
 
   async deletePlace(id) {
     try {
-      const response = await axiosApi.delete(`/api/Places/${id}`);
+      const response = await axiosApi.delete(`/api/Places/delete/${id}`);
       return response;
     } catch (error) {
       console.log(error);

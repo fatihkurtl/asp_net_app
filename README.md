@@ -11,6 +11,7 @@ Bu uygulama, kullanıcıların giriş yaparak kimlik doğrulaması gerçekleşti
 - **Şifre:** admin
 
 ## Kullanılan Teknolojiler
+- **Database:** MSSQL
 - **Backend:** ASP.NET
 - **Frontend:** React, Axios, Tailwind CSS
 
